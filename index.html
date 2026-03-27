@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IZS — Zúñiga y Suárez Ingeniería SpA</title>
+<meta name="description" content="Consultoría técnica integral de infraestructura. Diagnóstico, diseño y ejecución de proyectos en Chile.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#0D1B2A;
+  --navy2:#1B2D42;
+  --blue:#1A3A5C;
+  --accent:#1D4E89;
+  --white:#FFFFFF;
+  --off:#F8F8F6;
+  --light:#F0EFEB;
+  --border:#E2E0DA;
+  --text:#1A1A1A;
+  --muted:#6B6B6B;
+  --light-muted:#9A9A9A;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Barlow',sans-serif;
+}
+body{font-family:var(--sans);background:var(--white);color:var(--text);font-weight:300;line-height:1.6;overflow-x:hidden}
+
+/* ══ NAV ══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;height:70px;
+  background:rgba(255,255,255,0.97);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+.nav-logo{display:flex;align-items:center;gap:0;text-decoration:none}
+.nav-logo img{height:44px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{font-size:13px;font-weight:400;letter-spacing:.06em;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{
+  color:var(--white)!important;
+  background:var(--navy);
+  padding:9px 22px;border-radius:2px;
+  font-weight:500!important;letter-spacing:.04em!important;
+  transition:background .2s!important;
+}
+.nav-cta:hover{background:var(--accent)!important}
+.nav-tog{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-tog span{width:22px;height:1.5px;background:var(--text);display:block}
+
+/* ══ HERO ══ */
+.hero{
+  height:100vh;min-height:700px;
+  display:grid;grid-template-columns:1fr 1fr;
+  margin-top:70px;overflow:hidden;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 4rem 5rem 4rem;
+  background:var(--white);
+}
+.hero-tag{
+  font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:2rem;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-tag::before{content:'';width:24px;height:1.5px;background:var(--accent)}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(2.8rem,4.5vw,4.2rem);
+  font-weight:400;line-height:1.1;
+  color:var(--navy);
+  margin-bottom:1.5rem;
+  max-width:520px;
+}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-lead{
+  font-size:16px;font-weight:300;color:var(--muted);
+  max-width:440px;line-height:1.85;margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.btn-primary{
+  display:inline-block;text-decoration:none;
+  background:var(--navy);color:var(--white);
+  font-size:13px;font-weight:500;letter-spacing:.06em;
+  padding:13px 28px;border-radius:2px;transition:background .2s;
+}
+.btn-primary:hover{background:var(--accent)}
+.btn-secondary{
+  display:inline-block;text-decoration:none;
+  background:transparent;color:var(--navy);
+  font-size:13px;font-weight:400;letter-spacing:.06em;
+  padding:13px 28px;border-radius:2px;
+  border:1.5px solid var(--navy);transition:all .2s;
+}
+.btn-secondary:hover{background:var(--navy);color:var(--white)}
+.hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid var(--border)}
+.hstat .num{font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--navy);line-height:1;margin-bottom:3px}
+.hstat .lbl{font-size:12px;font-weight:300;color:var(--light-muted);letter-spacing:.04em}
+.hero-right{position:relative;overflow:hidden;background:var(--navy)}
+.hero-right img{width:100%;height:100%;object-fit:cover;opacity:.85;display:block}
+.hero-right-caption{
+  position:absolute;bottom:2rem;right:2rem;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  padding:.75rem 1.25rem;font-size:12px;font-weight:400;color:var(--navy);
+  letter-spacing:.04em;border-left:3px solid var(--accent);
+  max-width:240px;line-height:1.5;
+}
+
+/* ══ TICKER ══ */
+.ticker{background:var(--navy);overflow:hidden;padding:14px 0;white-space:nowrap}
+.ticker-t{display:inline-block;animation:tick 35s linear infinite}
+.ticker-t span{font-size:13px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:0 2.5rem}
+.ticker-t span.dot{color:rgba(255,255,255,.2);margin:0}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══ SECTIONS ══ */
+section{padding:100px 4rem}
+.container{max-width:1200px;margin:0 auto}
+.eyebrow{
+  font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;
+}
+.eyebrow::before{content:'';width:20px;height:1.5px;background:var(--accent)}
+h2.sh{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:400;line-height:1.15;color:var(--navy);margin-bottom:1rem}
+h2.sh em{font-style:italic;color:var(--accent)}
+.section-lead{font-size:15px;font-weight:300;color:var(--muted);max-width:540px;line-height:1.85}
+
+/* ══ EMPRESA ══ */
+#empresa{background:var(--white);padding-top:80px}
+.emp-layout{display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:start}
+.emp-text p{font-size:15px;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:1.2rem}
+.emp-text strong{color:var(--navy);font-weight:500}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:2.5rem;background:var(--border)}
+.pillar{background:var(--white);padding:1.4rem;border-top:3px solid transparent;transition:border-color .2s}
+.pillar:hover{border-color:var(--accent)}
+.pt{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:.35rem}
+.pd{font-size:13px;font-weight:300;color:var(--muted);line-height:1.6}
+.emp-photo-wrap{position:relative}
+.emp-photo{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;filter:grayscale(15%)}
+.emp-badge{
+  position:absolute;bottom:-1px;left:-1px;right:-1px;
+  background:var(--navy);padding:1.5rem;
+  display:flex;align-items:center;gap:1.5rem;
+}
+.badge-n{font-family:var(--serif);font-size:2.5rem;font-weight:400;color:white;line-height:1}
+.badge-t{font-size:12px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.5}
+
+/* ══ SERVICIOS ══ */
+#servicios{background:var(--off);padding:100px 0}
+.svc-header{padding:0 4rem;max-width:1200px;margin:0 auto 3rem}
+.svc-header-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end}
+
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.svc-card{
+  background:var(--white);padding:2.5rem 2rem;
+  display:flex;flex-direction:column;gap:.75rem;
+  transition:background .2s;cursor:default;
+  border-top:3px solid transparent;
+}
+.svc-card:hover{background:var(--navy);border-top-color:var(--accent)}
+.svc-card:hover .svc-n,.svc-card:hover .svc-title,.svc-card:hover .svc-desc,.svc-card:hover .svc-items li{color:rgba(255,255,255,.9)!important}
+.svc-card:hover .svc-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.svc-card:hover .svc-arrow{color:white}
+.svc-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:grayscale(20%);margin-bottom:.25rem}
+.svc-n{font-family:var(--serif);font-size:2.2rem;font-weight:400;color:rgba(0,0,0,.12);line-height:1}
+.svc-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:rgba(29,78,137,.07);padding:3px 8px;border-radius:1px;width:fit-content}
+.svc-title{font-size:15px;font-weight:500;color:var(--navy);line-height:1.3}
+.svc-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;flex:1}
+.svc-items{list-style:none;margin-top:auto;padding-top:.75rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:3px}
+.svc-items li{font-size:12px;font-weight:300;color:var(--light-muted);padding-left:12px;position:relative;line-height:1.5}
+.svc-items li::before{content:'—';position:absolute;left:0;color:var(--accent);font-size:10px}
+.svc-arrow{font-size:18px;color:var(--light-muted);margin-top:.5rem;transition:transform .2s}
+.svc-card:hover .svc-arrow{transform:translateX(4px)}
+
+/* ══ HOTELERÍA PATAGONIA ══ */
+#patagonia{background:var(--white);padding:0}
+.pat-layout{display:grid;grid-template-columns:1fr 1fr;min-height:90vh}
+.pat-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:var(--border)}
+.pat-gallery img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(10%);transition:filter .4s}
+.pat-gallery img:hover{filter:grayscale(0%)}
+.pat-content{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 4rem;background:var(--navy);
+}
+.pat-content .eyebrow{color:rgba(255,255,255,.5)}
+.pat-content .eyebrow::before{background:rgba(255,255,255,.3)}
+.pat-content h2{font-family:var(--serif);font-size:clamp(2rem,3vw,3rem);font-weight:400;line-height:1.15;color:var(--white);margin-bottom:1rem}
+.pat-content h2 em{font-style:italic;color:#7BAFD4}
+.pat-content p{font-size:15px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:2.5rem;max-width:420px}
+.phases{display:flex;flex-direction:column;gap:0;margin-bottom:2.5rem}
+.phase{display:flex;gap:1.5rem;padding:1.1rem 0;border-top:1px solid rgba(255,255,255,.1)}
+.ph-n{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:rgba(255,255,255,.25);flex-shrink:0;width:28px;line-height:1.2}
+.ph-t{font-size:13px;font-weight:500;color:white;margin-bottom:2px}
+.ph-d{font-size:12px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.6}
+.btn-white{display:inline-block;text-decoration:none;background:white;color:var(--navy);font-size:13px;font-weight:500;letter-spacing:.06em;padding:13px 28px;border-radius:2px;transition:background .2s}
+.btn-white:hover{background:var(--light)}
+
+/* ══ ESPECIALIDADES ══ */
+#especialidades{background:var(--off);padding:100px 0}
+.esp-header{padding:0 4rem;max-width:1200px;margin:0 auto 3rem}
+.esp-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:1px;background:var(--border);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.esp-card{
+  background:var(--white);overflow:hidden;
+  cursor:default;transition:background .15s;
+}
+.esp-card:hover{background:var(--off)}
+.esp-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:grayscale(25%);transition:filter .4s,transform .5s}
+.esp-card:hover .esp-img{filter:grayscale(0%);transform:scale(1.03)}
+.esp-body{padding:1.25rem 1.25rem 1.5rem}
+.esp-tag{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;display:block}
+.esp-title{font-size:14px;font-weight:500;color:var(--navy);line-height:1.3;margin-bottom:.35rem}
+.esp-desc{font-size:12px;font-weight:300;color:var(--muted);line-height:1.6}
+
+/* ══ PROYECTOS ══ */
+#proyectos{background:var(--white)}
+.proj-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3rem}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.proj{position:relative;overflow:hidden;background:var(--light);cursor:default}
+.proj-lg{grid-column:span 2;grid-row:span 2}
+.proj img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block;filter:grayscale(15%);transition:transform .6s,filter .4s}
+.proj:hover img{transform:scale(1.04);filter:grayscale(0%)}
+.proj-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,42,.9) 0%,rgba(13,27,42,.05) 55%);opacity:0;transition:opacity .3s}
+.proj:hover .proj-ov{opacity:1}
+.proj-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;transform:translateY(6px);transition:transform .3s;opacity:0}
+.proj:hover .proj-info{opacity:1;transform:translateY(0)}
+.pi-sec{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px}
+.pi-name{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:white;line-height:1.25}
+.pi-desc{font-size:12px;font-weight:300;color:rgba(255,255,255,.7);margin-top:4px;line-height:1.55}
+.proj-static{padding:1.25rem;background:var(--white);border-top:3px solid var(--border)}
+.ps-tag{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem;display:block}
+.ps-name{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:.25rem;line-height:1.3}
+.ps-desc{font-size:12px;font-weight:300;color:var(--muted);line-height:1.55}
+
+/* ══ PROCESO ══ */
+#proceso{background:var(--navy)}
+#proceso h2.sh{color:white}
+#proceso .eyebrow{color:rgba(255,255,255,.5)}
+#proceso .eyebrow::before{background:rgba(255,255,255,.3)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);margin-top:3rem}
+.paso{background:var(--navy);padding:2.5rem 2rem}
+.pa-n{font-family:var(--serif);font-size:3rem;font-weight:400;color:rgba(255,255,255,.1);line-height:1;margin-bottom:1.25rem}
+.pa-t{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:.6rem}
+.pa-d{font-size:13px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.75}
+
+/* ══ REFERENCIAS ══ */
+#referencias{background:var(--white)}
+.refs-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.refs-list{margin-top:2rem}
+.ref{padding:1.6rem 0;border-bottom:1px solid var(--border)}
+.ref:first-child{border-top:1px solid var(--border)}
+.rcl{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.rtit{font-size:15px;font-weight:500;color:var(--navy);margin-bottom:4px;font-family:var(--serif)}
+.rdesc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.75}
+.refs-visual{display:flex;flex-direction:column;gap:2px}
+.refs-visual img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:grayscale(15%)}
+
+/* ══ CONTACTO ══ */
+#contacto{background:var(--off);padding:0}
+.ct-layout{display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
+.ct-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:6rem 5rem 6rem 4rem;
+  border-right:1px solid var(--border);
+}
+.ct-left h2{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:400;line-height:1.12;color:var(--navy);margin-bottom:1rem}
+.ct-left h2 em{font-style:italic;color:var(--accent)}
+.ct-left p{font-size:15px;font-weight:300;color:var(--muted);line-height:1.85;max-width:400px;margin-bottom:2.5rem}
+.ct-datos{display:flex;flex-direction:column;gap:1.1rem}
+.dato{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text)}
+.dato-bullet{width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0}
+.dato-txt{font-size:15px;font-weight:300;color:var(--muted);transition:color .2s}
+.dato:hover .dato-txt{color:var(--navy)}
+.ct-right{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:6rem 4rem;
+  background:var(--white);
+}
+.form-title{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--navy);margin-bottom:2rem}
+.fg{margin-bottom:1.25rem}
+.fg label{display:block;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--light-muted);margin-bottom:7px}
+.fg input,.fg select,.fg textarea{
+  width:100%;background:transparent;border:none;border-bottom:1.5px solid var(--border);
+  padding:10px 0;color:var(--navy);font-family:var(--sans);font-size:14px;font-weight:300;
+  outline:none;transition:border-color .2s;border-radius:0;-webkit-appearance:none;
+}
+.fg select option{background:white;color:var(--navy)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-bottom-color:var(--accent)}
+.fg textarea{resize:vertical;min-height:80px}
+.form-sub{
+  margin-top:1.5rem;background:var(--navy);color:white;border:none;
+  font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.08em;
+  padding:14px 32px;cursor:pointer;border-radius:2px;transition:background .2s;
+}
+.form-sub:hover{background:var(--accent)}
+
+/* ══ FOOTER ══ */
+footer{background:var(--navy);padding:2.5rem 4rem;border-top:1px solid rgba(255,255,255,.06)}
+.fi{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fid{font-size:13px;font-weight:300;color:rgba(255,255,255,.4)}
+.fid strong{color:rgba(255,255,255,.8);font-weight:400;display:block;margin-bottom:2px}
+.fnav{display:flex;gap:2rem;list-style:none}
+.fnav a{font-size:12px;font-weight:300;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.fnav a:hover{color:white}
+.frut{font-size:12px;font-weight:300;color:rgba(255,255,255,.35);text-align:right}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1100px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .esp-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:960px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .nav-tog{display:flex}
+  nav.open .nav-links{display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:white;padding:2rem 1.5rem;gap:1.5rem;border-bottom:1px solid var(--border);z-index:199}
+  .hero{grid-template-columns:1fr;height:auto}
+  .hero-left{padding:3.5rem 1.5rem}
+  .hero-right{min-height:340px}
+  .emp-layout,.proj-intro{grid-template-columns:1fr;gap:2rem}
+  .pat-layout{grid-template-columns:1fr}
+  .pat-gallery{grid-template-columns:1fr 1fr;min-height:320px}
+  .pat-content{padding:3.5rem 1.5rem}
+  .refs-layout{grid-template-columns:1fr;gap:2rem}
+  .ct-layout{grid-template-columns:1fr}
+  .ct-left{padding:4rem 1.5rem 3rem;border-right:none;border-bottom:1px solid var(--border)}
+  .ct-right{padding:3rem 1.5rem 5rem}
+  .proc-grid{grid-template-columns:1fr 1fr}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .esp-grid{grid-template-columns:repeat(2,1fr)}
+  .proj-grid{grid-template-columns:1fr 1fr}
+  .proj-lg{grid-column:span 2;grid-row:span 1}
+  section{padding:70px 1.5rem}
+  .svc-header,.esp-header{padding:0 1.5rem}
+  footer{padding:2rem 1.5rem}
+}
+@media(max-width:580px){
+  .svc-grid,.esp-grid,.proc-grid,.proj-grid{grid-template-columns:1fr}
+  .proj-lg{grid-column:span 1}
+  .hero-stats{gap:1.5rem}
+  .pat-gallery{grid-template-columns:1fr;min-height:280px}
+  .pillars{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <img src="IZS_Logo.jpg" alt="IZS Ingeniería">
+  </a>
+  <ul class="nav-links" id="navlinks">
+    <li><a href="#empresa">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#patagonia">Patagonia</a></li>
+    <li><a href="#especialidades">Especialidades</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#referencias">Referencias</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+  <div class="nav-tog" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Zúñiga y Suárez Ingeniería SpA</p>
+    <h1>Infraestructura con<br>criterio técnico.<br>De inicio a <em>entrega.</em></h1>
+    <p class="hero-lead">Diagnóstico, diseño y ejecución de proyectos en Chile. Sector público y privado. Un solo equipo técnico responsable de ciclo completo.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Iniciar un proyecto</a>
+      <a href="#servicios" class="btn-secondary">Ver servicios</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="num">10+</div><div class="lbl">Años de experiencia</div></div>
+      <div class="hstat"><div class="num">52k</div><div class="lbl">m² gestionados</div></div>
+      <div class="hstat"><div class="num">150+</div><div class="lbl">Observaciones U. Chile</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="ingenieria_infraestructura_educativa.png" alt="Ingeniería IZS">
+    <div class="hero-right-caption">Revisión y elaboración de proyectos en edificios corporativos y universidades</div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-t">
+    <span>Ingeniería Sanitaria</span><span class="dot">·</span>
+    <span>Climatización HVAC</span><span class="dot">·</span>
+    <span>Due Diligence Técnico</span><span class="dot">·</span>
+    <span>Infraestructura Escolar</span><span class="dot">·</span>
+    <span>Diagnóstico Hotelero</span><span class="dot">·</span>
+    <span>Proyectos Electricos</span><span class="dot">·</span>
+    <span>Topografía</span><span class="dot">·</span>
+    <span>Ingeniería Vial</span><span class="dot">·</span>
+    <span>Sector Público</span><span class="dot">·</span>
+    <span>Patagonia</span><span class="dot">·</span>
+    <span>Ingeniería Sanitaria</span><span class="dot">·</span>
+    <span>Climatización HVAC</span><span class="dot">·</span>
+    <span>Due Diligence Técnico</span><span class="dot">·</span>
+    <span>Infraestructura Escolar</span><span class="dot">·</span>
+    <span>Diagnóstico Hotelero</span><span class="dot">·</span>
+    <span>Proyectos Electricos</span><span class="dot">·</span>
+    <span>Topografía</span><span class="dot">·</span>
+    <span>Ingeniería Vial</span><span class="dot">·</span>
+    <span>Sector Público</span><span class="dot">·</span>
+    <span>Patagonia</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- EMPRESA -->
+<section id="empresa">
+  <div class="container">
+    <div class="emp-layout">
+      <div>
+        <p class="eyebrow">Quiénes somos</p>
+        <h2 class="sh">Consultoría técnica.<br>No una constructora.<br>Su <em>equipo externo.</em></h2>
+        <div class="emp-text" style="margin-top:1.5rem">
+          <p>IZS Ingeniería SpA opera desde la consultoría técnica al sector público — contratos en Mercado Público, ingeniería de especialidades, diagnósticos e inspecciones para organismos del Estado. Esa base nos dio la metodología que hoy ofrecemos al sector privado.</p>
+          <p>El profesional a cargo tiene formación en arquitectura e ingeniería en construcción, con más de 10 años ejecutando proyectos de alta complejidad: desde embalses en zonas extremas hasta la gestión simultánea de <strong>51 sucursales corporativas y 52.000 m²</strong>.</p>
+          <p>Lo que nos diferencia es simple: <strong>el mismo equipo que diagnostica, diseña y ejecuta.</strong> Sin traspasos, sin pérdida de contexto, sin sorpresas al final.</p>
+        </div>
+        <div class="pillars">
+          <div class="pillar"><div class="pt">Diagnóstico</div><div class="pd">Levantamos lo que existe antes de proponer cualquier intervención.</div></div>
+          <div class="pillar"><div class="pt">Diseño</div><div class="pd">Todas las especialidades coordinadas desde una sola oficina.</div></div>
+          <div class="pillar"><div class="pt">Ejecución</div><div class="pd">El mismo equipo que diseñó supervisa la obra en terreno.</div></div>
+          <div class="pillar"><div class="pt">Gestión de activos</div><div class="pd">La infraestructura como activo de largo plazo, no como gasto reactivo.</div></div>
+        </div>
+      </div>
+      <div class="emp-photo-wrap">
+        <img class="emp-photo" src="ingenieria_analisis_digital.png" alt="Análisis técnico IZS">
+        <div class="emp-badge">
+          <div class="badge-n">10+</div>
+          <div class="badge-t">años de experiencia<br>técnica en Chile</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="svc-header">
+    <div class="svc-header-grid">
+      <div>
+        <p class="eyebrow">Servicios</p>
+        <h2 class="sh">Cinco líneas.<br><em>Un responsable.</em></h2>
+      </div>
+      <p class="section-lead">Cada servicio responde a un problema real de un decisor específico. No vendemos lo mismo a todos.</p>
+    </div>
+  </div>
+  <div class="svc-grid">
+
+    <div class="svc-card">
+      <img class="svc-img" src="ingenieria_analisis_digital.png" alt="Sector público">
+      <div class="svc-n">01</div>
+      <span class="svc-tag">Sector Público</span>
+      <div class="svc-title">Consultoría e Ingeniería de Especialidades</div>
+      <div class="svc-desc">Proyectos sanitarios, climatización, electricidad y remodelaciones para organismos del Estado vía Mercado Público. Cumplimiento normativo sin fricciones.</div>
+      <ul class="svc-items">
+        <li>Ingeniería sanitaria y contra incendio</li>
+        <li>Climatización HVAC y BMS</li>
+        <li>Levantamientos y preinversión</li>
+      </ul>
+      <div class="svc-arrow">→</div>
+    </div>
+
+    <div class="svc-card">
+      <img class="svc-img" src="ingenieria_infraestructura_educativa.png" alt="Educación">
+      <div class="svc-n">02</div>
+      <span class="svc-tag">Educación</span>
+      <div class="svc-title">Director de Infraestructura Externalizado</div>
+      <div class="svc-desc">Para sostenedores de colegios particulares. La experiencia educativa es infraestructura — labs, acústica, climatización con retorno real en 2 a 4 años.</div>
+      <ul class="svc-items">
+        <li>Labs tecnología y maker spaces</li>
+        <li>Salas con aislación acústica real</li>
+        <li>Energía solar con retorno estimado</li>
+      </ul>
+      <div class="svc-arrow">→</div>
+    </div>
+
+    <div class="svc-card">
+      <img class="svc-img" src="ingenieria_diagnostico_instalaciones.png" alt="Due Diligence">
+      <div class="svc-n">03</div>
+      <span class="svc-tag">Corporativo</span>
+      <div class="svc-title">Due Diligence Técnico de Infraestructura</div>
+      <div class="svc-desc">Un edificio sin diagnóstico es un pasivo oculto. No cinco informes de cinco especialistas: un solo diagnóstico integral, un responsable, una factura.</div>
+      <ul class="svc-items">
+        <li>Todas las especialidades en un informe</li>
+        <li>Matriz de riesgos y CAPEX por partida</li>
+        <li>Cumplimiento Oguc, SEC, DS 548</li>
+      </ul>
+      <div class="svc-arrow">→</div>
+    </div>
+
+    <div class="svc-card">
+      <img class="svc-img" src="lodge_patagonia_futaleufu.png" alt="Hotelería">
+      <div class="svc-n">04</div>
+      <span class="svc-tag">Hospitalidad · Sur de Chile</span>
+      <div class="svc-title">Diagnóstico y Diseño Hotelero</div>
+      <div class="svc-desc">Para hoteles establecidos y proyectos nuevos entre Valdivia y Tierra del Fuego. Identificamos problemas antes de que los escriban en una reseña.</div>
+      <ul class="svc-items">
+        <li>Diagnóstico técnico + perspectiva huésped</li>
+        <li>Proyectos de nueva infraestructura</li>
+        <li>Versión corporativa CAPEX/OPEX</li>
+      </ul>
+      <div class="svc-arrow">→</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PATAGONIA -->
+<section id="patagonia">
+  <div class="pat-layout">
+    <div class="pat-gallery">
+      <img src="lodge_futaleufu_hottub.png" alt="Lodge Futaleufú">
+      <img src="lodge_futaleufu_modular.png" alt="Lodge modular">
+      <img src="lodge_futaleufu_vertical.png" alt="Lodge vertical">
+      <img src="lodge_patagonia_futaleufu.png" alt="Patagonia lodge">
+    </div>
+    <div class="pat-content">
+      <p class="eyebrow">Hotelería y lodge · Patagonia</p>
+      <h2>Valdivia a Tierra del Fuego.<br>Donde la naturaleza<br>es el <em>producto.</em></h2>
+      <p>La consultoría de diseño hotelero en el sur de Chile requiere criterio técnico y comprensión del entorno. Acompañamos proyectos nuevos y diagnósticos de establecimientos existentes, desde el concepto hasta la entrega.</p>
+      <div class="phases">
+        <div class="phase"><div class="ph-n">I</div><div><div class="ph-t">Consultoría Conceptual</div><div class="ph-d">Viabilidad normativa, análisis de terreno y estimación de inversión. Sin compromiso de diseño hasta validar el proyecto.</div></div></div>
+        <div class="phase"><div class="ph-n">II</div><div><div class="ph-t">Diseño e Ingeniería</div><div class="ph-d">Arquitectura, todas las especialidades y gestión de permisos en zona extrema.</div></div></div>
+        <div class="phase"><div class="ph-n">III</div><div><div class="ph-t">Construcción y Entrega</div><div class="ph-d">Administración de obra en zona remota y entrega integral del proyecto.</div></div></div>
+      </div>
+      <a href="#contacto" class="btn-white">Conversar la Fase I</a>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section id="especialidades">
+  <div class="esp-header">
+    <p class="eyebrow">Especialidades técnicas</p>
+    <h2 class="sh">Lo que hacemos<br>en <em>terreno.</em></h2>
+  </div>
+  <div class="esp-grid">
+
+    <div class="esp-card">
+      <img class="esp-img" src="ingenieria_diagnostico_instalaciones.png" alt="Termografía">
+      <div class="esp-body">
+        <span class="esp-tag">Diagnóstico</span>
+        <div class="esp-title">Termografía a Equipos de Precisión</div>
+        <div class="esp-desc">Detección de fallas en instalaciones eléctricas, mecánicas y de climatización sin detener operaciones.</div>
+      </div>
+    </div>
+
+    <div class="esp-card">
+      <img class="esp-img" src="ingenieria_climatizacion_hvac.png" alt="HVAC">
+      <div class="esp-body">
+        <span class="esp-tag">Climatización</span>
+        <div class="esp-title">Ingeniería HVAC y Sistemas de Climatización</div>
+        <div class="esp-desc">Diseño, levantamiento y auditoría de sistemas de climatización en edificios corporativos, hospitalarios y educacionales.</div>
+      </div>
+    </div>
+
+    <div class="esp-card">
+      <img class="esp-img" src="ingenieria_planta_tratamiento.png" alt="Sanitaria">
+      <div class="esp-body">
+        <span class="esp-tag">Sanitaria</span>
+        <div class="esp-title">Revisión de Plantas de Tratamiento de Aguas</div>
+        <div class="esp-desc">Inspección, diagnóstico y diseño de sistemas de tratamiento de aguas grises y residuales.</div>
+      </div>
+    </div>
+
+    <div class="esp-card">
+      <img class="esp-img" src="ingenieria_proyectos_electricos.png" alt="Eléctrica">
+      <div class="esp-body">
+        <span class="esp-tag">Eléctrica</span>
+        <div class="esp-title">Levantamiento y Proyectos Eléctricos</div>
+        <div class="esp-desc">Revisión, levantamiento y ejecución de proyectos eléctricos. Cumplimiento SEC y normativa vigente.</div>
+      </div>
+    </div>
+
+    <div class="esp-card">
+      <img class="esp-img" src="ingenieria_inspeccion_tecnologica.png" alt="Levantamiento">
+      <div class="esp-body">
+        <span class="esp-tag">Levantamiento</span>
+        <div class="esp-title">Levantamientos Técnicos con Equipos de Precisión</div>
+        <div class="esp-desc">Escáner 3D, nube de puntos y documentación técnica de edificios existentes para proyectos de remodelación o diagnóstico.</div>
+      </div>
+    </div>
+
+    <div class="esp-card">
+      <img class="esp-img" src="ingenieria_topografia_precision.png" alt="Topografía">
+      <div class="esp-body">
+        <span class="esp-tag">Topografía</span>
+        <div class="esp-title">Topografía y Levantamientos Topográficos</div>
+        <div class="esp-desc">Levantamientos topográficos de precisión para proyectos de ingeniería, subdivisiones y obras de infraestructura.</div>
+      </div>
+    </div>
+
+    <div class="esp-card">
+      <img class="esp-img" src="ingenieria_civil_carreteras_corregida.png" alt="Vial">
+      <div class="esp-body">
+        <span class="esp-tag">Vial</span>
+        <div class="esp-title">Ingeniería Vial: Revisión y Desarrollo</div>
+        <div class="esp-desc">Diseño y revisión de proyectos de ingeniería vial. Inspección técnica, análisis de pavimentos y proyectos de acceso.</div>
+      </div>
+    </div>
+
+    <div class="esp-card" style="background:var(--navy);border-top:3px solid var(--accent)">
+      <div style="height:100%;min-height:140px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:1.5rem 1.25rem">
+        <div style="font-family:var(--serif);font-size:1.6rem;color:white;font-weight:400;margin-bottom:.75rem;line-height:1.2">¿Necesita una especialidad específica?</div>
+        <a href="#contacto" class="btn-white" style="font-size:12px;padding:10px 20px">Conversemos →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="container">
+    <div class="proj-intro">
+      <div>
+        <p class="eyebrow">Proyectos</p>
+        <h2 class="sh">Trabajo con mandante<br>y <em>resultado verificable.</em></h2>
+      </div>
+      <p class="section-lead">Cada referencia tiene número de contrato y cliente contactable. Nada de portafolio decorativo.</p>
+    </div>
+  </div>
+  <div class="proj-grid" style="max-width:1600px;margin:0 auto">
+
+    <div class="proj proj-lg" style="min-height:480px">
+      <img src="ingenieria_infraestructura_educativa.png" alt="Universidad de Chile" style="min-height:480px">
+      <div class="proj-ov"></div>
+      <div class="proj-info">
+        <div class="pi-sec">Educación · Diagnóstico integral</div>
+        <div class="pi-name">Facultad de Ciencias Políticas — Universidad de Chile</div>
+        <div class="pi-desc">+150 observaciones técnicas. Sistema BMS, chillers, UMA, fan coils y redes completas en edificio patrimonial con teatro.</div>
+      </div>
+    </div>
+
+    <div class="proj" style="min-height:235px">
+      <img src="ingenieria_diagnostico_instalaciones.png" alt="Hospital" style="min-height:235px">
+      <div class="proj-ov"></div>
+      <div class="proj-info">
+        <div class="pi-sec">Salud · HVAC en ejecución</div>
+        <div class="pi-name">Neurología — Hospital Clínico U. de Chile</div>
+      </div>
+    </div>
+
+    <div class="proj" style="min-height:235px">
+      <img src="ingenieria_planta_tratamiento.png" alt="COSAM" style="min-height:235px">
+      <div class="proj-ov"></div>
+      <div class="proj-info">
+        <div class="pi-sec">Salud pública · Ingeniería sanitaria</div>
+        <div class="pi-name">COSAM Quinta Normal — Ex Hospital Félix Bulnes</div>
+      </div>
+    </div>
+
+    <div class="proj" style="min-height:235px">
+      <img src="ingenieria_analisis_digital.png" alt="Tribunal" style="min-height:235px">
+      <div class="proj-ov"></div>
+      <div class="proj-info">
+        <div class="pi-sec">Sector judicial</div>
+        <div class="pi-name">Tribunal de Compras Públicas</div>
+      </div>
+    </div>
+
+    <div class="proj" style="min-height:235px">
+      <img src="ingenieria_climatizacion_hvac.png" alt="Emergencias" style="min-height:235px">
+      <div class="proj-ov"></div>
+      <div class="proj-info">
+        <div class="pi-sec">Salud pública · Obras civiles</div>
+        <div class="pi-name">Oficina de Emergencias Sanitarias</div>
+      </div>
+    </div>
+
+    <div class="proj" style="min-height:235px">
+      <img src="lodge_futaleufu_vertical.png" alt="Lodge" style="min-height:235px">
+      <div class="proj-ov"></div>
+      <div class="proj-info">
+        <div class="pi-sec">Hospitalidad · Patagonia</div>
+        <div class="pi-name">Proyecto Lodge — Futaleufú</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="container">
+    <p class="eyebrow">Cómo trabajamos</p>
+    <h2 class="sh">Del primer contacto<br>a la <em>entrega final.</em></h2>
+    <div class="proc-grid">
+      <div class="paso"><div class="pa-n">01</div><div class="pa-t">Diagnóstico</div><div class="pa-d">Visitamos el proyecto e identificamos el problema real. Informe con opciones y retorno estimado en 5 días. Colegios: primera visita gratuita.</div></div>
+      <div class="paso"><div class="pa-n">02</div><div class="pa-t">Propuesta</div><div class="pa-d">Alcance, costo, plazo y retorno esperado. Usted prioriza. En 48 horas para diagnósticos técnicos corporativos.</div></div>
+      <div class="paso"><div class="pa-n">03</div><div class="pa-t">Ejecución</div><div class="pa-d">Gestionamos la licitación y supervisamos la obra. Su operación no se interrumpe. Un interlocutor, una factura.</div></div>
+      <div class="paso"><div class="pa-n">04</div><div class="pa-t">Continuidad</div><div class="pa-d">No buscamos el contrato puntual. Somos el equipo que acompaña la cartera de infraestructura en el tiempo.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCIAS -->
+<section id="referencias">
+  <div class="container">
+    <div class="refs-layout">
+      <div>
+        <p class="eyebrow">Respaldo profesional</p>
+        <h2 class="sh">Clientes con nombre<br>y <em>resultado concreto.</em></h2>
+        <div class="refs-list">
+          <div class="ref"><div class="rcl">JLL — Jones Lang LaSalle</div><div class="rtit">51 sucursales · 52.000 m²</div><div class="rdesc">Gestión integral de infraestructura para importante compañía aseguradora. Diagnóstico y resolución de patologías con deficiencias constructivas.</div></div>
+          <div class="ref"><div class="rcl">Corporación Administrativa del Poder Judicial</div><div class="rtit">Cartera de infraestructura pública</div><div class="rdesc">Supervisión técnica en especialidades estructural, sanitaria, eléctrica y climatización. Seguimiento financiero y modificaciones contractuales.</div></div>
+          <div class="ref"><div class="rcl">Colegio Nido de Águilas</div><div class="rtit">Facility Management educacional</div><div class="rdesc">Gestión de infraestructura para establecimiento de alto estándar en Santiago. Referencia directa en educación privada.</div></div>
+          <div class="ref"><div class="rcl">Universidad de Chile</div><div class="rtit">Diagnóstico integral · Edificio patrimonial</div><div class="rdesc">+150 observaciones en edificio con teatro. BMS, chillers, fan coils y redes completas de climatización.</div></div>
+          <div class="ref"><div class="rcl">SURA S.A. · IMACO Ltda.</div><div class="rtit">66 sucursales + obras en zonas extremas</div><div class="rdesc">Coordinación nacional de mantenimiento, puesta en marcha de 20.000 m² y obras en Arica, Atacama, Chiloé y embalse Ancoa.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="refs-visual">
+          <img src="ingenieria_inspeccion_tecnologica.png" alt="Levantamiento técnico">
+          <img src="ingenieria_topografia_precision.png" alt="Topografía">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="ct-layout">
+    <div class="ct-left">
+      <p class="eyebrow">Contacto</p>
+      <h2>Cuéntenos<br>el <em>desafío.</em></h2>
+      <p>En 48 horas respondemos con una propuesta de alcance y plazo. Para colegios: diagnóstico gratuito en la primera visita, informe en 5 días.</p>
+      <div class="ct-datos">
+        <a class="dato" href="mailto:jgonzalez@izs.cl"><div class="dato-bullet"></div><span class="dato-txt">jgonzalez@izs.cl</span></a>
+        <a class="dato" href="tel:+56991368507"><div class="dato-bullet"></div><span class="dato-txt">+56 9 9136 8507</span></a>
+        <div class="dato"><div class="dato-bullet"></div><span class="dato-txt">San Ignacio 4013, San Miguel, RM</span></div>
+        <div class="dato"><div class="dato-bullet"></div><span class="dato-txt">izs.cl</span></div>
+      </div>
+    </div>
+    <div class="ct-right">
+      <div class="form-title">Iniciar una conversación</div>
+      <div class="fg"><label>Nombre</label><input type="text" placeholder="Su nombre"></div>
+      <div class="fg"><label>Correo</label><input type="email" placeholder="correo@empresa.cl"></div>
+      <div class="fg"><label>Tipo de proyecto</label>
+        <select>
+          <option value="">Seleccione el servicio</option>
+          <option>Consultoría e ingeniería — sector público</option>
+          <option>Infraestructura escolar</option>
+          <option>Due diligence técnico corporativo</option>
+          <option>Diagnóstico o diseño hotelero — sur de Chile</option>
+          <option>Proyecto lodge / zonas extremas</option>
+          <option>Termografía o levantamiento técnico</option>
+          <option>Climatización HVAC</option>
+          <option>Ingeniería sanitaria</option>
+          <option>Proyectos eléctricos</option>
+          <option>Topografía o ingeniería vial</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="fg"><label>Descripción</label><textarea placeholder="Una idea general es suficiente para armar una propuesta."></textarea></div>
+      <button class="form-sub" onclick="enviar()">Enviar consulta</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div class="fid">
+      <strong>IZS — Zúñiga y Suárez Ingeniería SpA</strong>
+      izs.cl · jgonzalez@izs.cl · +56 9 9136 8507
+    </div>
+    <ul class="fnav">
+      <li><a href="#empresa">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#patagonia">Patagonia</a></li>
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="frut">RUT 78.143.026-9<br>San Miguel, Región Metropolitana</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  // nav ya es siempre visible blanco, no necesita cambio
+})
+function toggleNav(){
+  document.getElementById('nav').classList.toggle('open')
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open'))
+})
+function enviar(){
+  const btn=document.querySelector('.form-sub')
+  const f=document.querySelectorAll('.fg input,.fg select,.fg textarea')
+  const n=f[0].value.trim(),e=f[1].value.trim()
+  if(!n||!e){
+    btn.textContent='Complete nombre y correo'
+    btn.style.background='#7a1e1e'
+    setTimeout(()=>{btn.textContent='Enviar consulta';btn.style.background=''},2500)
+    return
+  }
+  const s=encodeURIComponent(`Consulta izs.cl — ${f[2].value||'Proyecto'}`)
+  const b=encodeURIComponent(`Nombre: ${n}\nEmail: ${e}\nServicio: ${f[2].value||'No especificado'}\n\n${f[3].value}`)
+  window.location.href=`mailto:jgonzalez@izs.cl?subject=${s}&body=${b}`
+  btn.textContent='Enviado ✓';btn.style.background='#1a4a2e'
+  setTimeout(()=>{btn.textContent='Enviar consulta';btn.style.background='';f.forEach(i=>i.value='')},3000)
+}
+</script>
+</body>
+</html>
